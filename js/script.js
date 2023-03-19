@@ -37,26 +37,26 @@ scene.add(camera)
 
 
 // Geometry
-const geometry = new THREE.BoxGeometry(1, 1, 1)
-const material = new THREE.MeshStandardMaterial({ color: 0xff0000 })
-const mesh = new THREE.Mesh(geometry, material)
-mesh.position.y = 0.5
-mesh.castShadow = true
-scene.add(mesh)
+const box = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshStandardMaterial({ color: 0xff0000 })
+)
+box.position.y = 0.5
+box.castShadow = true
+scene.add(box)
 
-const plane = new THREE.PlaneGeometry(5, 5)
-const gmaterial = new THREE.MeshStandardMaterial({ color: 0xff0000 })
-const gmesh = new THREE.Mesh(plane, gmaterial)
-gmesh.rotation.x = - Math.PI * 0.5
-gmesh.position.y = 0
-gmesh.receiveShadow = true
-scene.add(gmesh)
+const floor = new THREE.Mesh(
+    new THREE.PlaneGeometry(5, 5),
+    new THREE.MeshStandardMaterial({ color: 0xff0000 })
+)
+floor.rotation.x = -Math.PI * 0.5
+floor.position.y = 0
+floor.receiveShadow = true
+scene.add(floor)
 
 
 // Lights
-const ambientLight = new THREE.AmbientLight()
-ambientLight.color = new THREE.Color(0xffffff)
-ambientLight.intensity = 0.25
+const ambientLight = new THREE.AmbientLight(new THREE.Color(0xffffff), 0.2)
 scene.add(ambientLight)
 
 const pointLight = new THREE.PointLight(0xffffff, 1, 15)
