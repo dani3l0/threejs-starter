@@ -41,6 +41,7 @@ const geometry = new THREE.BoxGeometry(1, 1, 1)
 const material = new THREE.MeshStandardMaterial({ color: 0xff0000 })
 const mesh = new THREE.Mesh(geometry, material)
 mesh.position.y = 0.5
+mesh.castShadow = true
 scene.add(mesh)
 
 const plane = new THREE.PlaneGeometry(5, 5)
@@ -48,6 +49,7 @@ const gmaterial = new THREE.MeshStandardMaterial({ color: 0xff0000 })
 const gmesh = new THREE.Mesh(plane, gmaterial)
 gmesh.rotation.x = - Math.PI * 0.5
 gmesh.position.y = 0
+gmesh.receiveShadow = true
 scene.add(gmesh)
 
 
@@ -59,6 +61,7 @@ scene.add(ambientLight)
 
 const pointLight = new THREE.PointLight(0xffffff, 1, 15)
 pointLight.position.set(3, 3, -1)
+pointLight.castShadow = true
 scene.add(pointLight)
 
 
@@ -71,6 +74,7 @@ controls.enableDamping = true
 const renderer = new THREE.WebGLRenderer({
     canvas: canvas
 })
+renderer.shadowMap.enabled = true
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
